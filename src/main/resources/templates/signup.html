@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="base::Layout(~{::section})">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="UTF-8">
+
+	<title>this is Signup page!</title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-md-8 offset-md-2">
+					<div class="card  mt-1"> 
+					<div th:if="${session.message}"th:classappend="${session.message.type}" class="alert" role="alert">
+  <p th:text="${session.message.containt}"></p> 
+  	<th:block th:text="${#session.removeAttribute('message')}"></th:block> 
+</div>  
+
+ <div class="container text-center"> 
+   <img style="width:100px;" src="" th:src="@{/img/register.png}" />
+
+  </div>
+ 
+						<h1 class="text-center ">Register Here !!</h1>
+						<form action="" th:action="@{/do_register}" method="post" th:object="${user}">
+
+							<!-- name feld-->
+							 
+							 <div class="form-group">
+								<label for="name_field" class="form-label"> Your name</label>
+								<input 
+								 name="name"
+								  type="text" 
+								 class="form-control"
+								  id="name_field" 
+								  aria-describedby="emailHelp"
+								placeholder="name Here" 
+								required    
+								th:value="${user.name}"
+									/>
+							  <div class="invalid-feedback">
+      Please provide a valid name.
+    </div>
+							 </div>
+					   <!-- email feld-->
+					   <div class="form-group">
+								<label for="email_field" class="form-label"> Email</label>
+								<input name="email" type="email" class="form-control" id="email_field" aria-describedby="emailHelp"
+									placeholder="Email Here"required 
+									th:value="${user.email}"
+									/>
+							</div>
+					 <!-- password feld-->
+							 
+							 <div class="form-group">
+								<label for="password_field" class="form-label">Password</label>
+								<input name="password" type="password" class="form-control" id="password_field" aria-describedby="emailHelp"
+									placeholder="password Here" 
+								required	>
+							
+							</div>
+					  <!-- about feld-->
+							<div class="form-group"> 
+							 <textarea name="about"th:value="${user.about}" placeholder="enter about yourself"optional  rows="10" class="form-control"></textarea>
+							 
+							 </div> 
+					 
+					 	<!--term and condition -->	
+ <div class="form-group form-check text-center"> 
+ <input type="checkbox" name="agreement" class="form-check-input"id="agreement"/>
+ <lable for="agreement">Accept terms and conditions </lable>
+ 
+ </div>
+ 
+ 
+ 
+ <!-- button-->
+ <div class="container text-center" >   
+<button type="submit" class="btn bg-primary text-white"> 
+submit
+</button>
+   
+<button type="reset" class="btn btn-warning text-white"> 
+reset
+</button>
+</div>		 
+			 		</form>
+				</div>
+ 
+ 
+
+			</div>
+
+
+		</div>
+	</section>
+</body>
+
+</html>
